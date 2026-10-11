@@ -65,4 +65,6 @@ Last updated: 2026-10-11 (Asia/Kolkata), milestone 2, phase 1.
 
 ## Latest verified commit
 
-Recorded at the end of this file after the push (see the final report).
+- Commit `6cd3df4` on `arena/4d717d14-650-discord-bot-v2` (pushed; remote head verified via the GitHub API).
+- GitHub Actions run `38112170978` on that commit: `Install, syntax, registry and tests`, `Dependency vulnerability check`, and `Secret scanning` all succeeded.
+- A first push was blocked by GitHub push protection because a test fixture contained a Discord-token-shaped literal. The fixture was rebuilt at runtime and the unpublished commit was amended. No secret reached the remote.
