@@ -1,0 +1,33 @@
+{
+  "name": "tanveer-discord-bot",
+  "version": "0.1.0",
+  "description": "Tanveer Discord Bot: moderation, economy, leveling, giveaways and custom commands. Made by Tanveer | Discord: tanveer5637",
+  "author": "Tanveer (Discord: tanveer5637)",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning src/index.js",
+    "check": "node --disable-warning=ExperimentalWarning src/index.js --check",
+    "test": "node --disable-warning=ExperimentalWarning --test --test-reporter=spec tests/*.test.js",
+    "syntax": "node --disable-warning=ExperimentalWarning scripts/check-syntax.js",
+    "migrate": "node --disable-warning=ExperimentalWarning scripts/migrate.js",
+    "validate:commands": "node --disable-warning=ExperimentalWarning scripts/validate-commands.js",
+    "inventory": "node --disable-warning=ExperimentalWarning scripts/inventory.js",
+    "register:guild": "node --disable-warning=ExperimentalWarning scripts/register-commands.js --scope guild",
+    "register:global": "node --disable-warning=ExperimentalWarning scripts/register-commands.js --scope global",
+    "doctor": "node --disable-warning=ExperimentalWarning scripts/doctor.js",
+    "backup": "node --disable-warning=ExperimentalWarning scripts/backup.js",
+    "banner": "node --disable-warning=ExperimentalWarning scripts/generate-banner.js",
+    "audit": "npm audit --omit=dev --audit-level=high"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {},
+  "overrides": {}
+}

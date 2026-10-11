@@ -1,0 +1,1967 @@
+{
+  "generatedAt": "2026-10-10T05:11:41.578Z",
+  "counts": {
+    "topLevelCommands": 23,
+    "subcommandGroups": 7,
+    "subcommands": 99,
+    "functionalActions": 100,
+    "administrationAndModerationActions": 49,
+    "behaviourTestedActions": 10,
+    "smokeTestedActions": 100,
+    "registeredTopLevelCommands": 0,
+    "registeredSubcommands": 0
+  },
+  "registration": {
+    "discordConfirmed": false,
+    "note": "No registration has been confirmed by Discord from this checkout."
+  },
+  "byCategory": {
+    "branding": 1,
+    "utility": 11,
+    "owner": 11,
+    "administration": 20,
+    "moderation": 11,
+    "security": 18,
+    "community": 18,
+    "economy": 10
+  },
+  "actions": [
+    {
+      "key": "about",
+      "topLevel": "about",
+      "path": [],
+      "category": "branding",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Show information about this bot and its creator",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.ping",
+      "topLevel": "utility",
+      "path": [
+        "ping"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Check the bot’s gateway latency",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.avatar",
+      "topLevel": "utility",
+      "path": [
+        "avatar"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Show a user’s avatar (no ping)",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.serverinfo",
+      "topLevel": "utility",
+      "path": [
+        "serverinfo"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show details about this server",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.userinfo",
+      "topLevel": "utility",
+      "path": [
+        "userinfo"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Show details about a user",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.calc",
+      "topLevel": "utility",
+      "path": [
+        "calc"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Evaluate a safe arithmetic expression",
+      "options": [
+        "expression"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.timestamp",
+      "topLevel": "utility",
+      "path": [
+        "timestamp"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Create a Discord timestamp for a time from now",
+      "options": [
+        "in",
+        "style"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "utility.base64",
+      "topLevel": "utility",
+      "path": [
+        "base64"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Encode or decode Base64 text",
+      "options": [
+        "mode",
+        "text"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "owner.status",
+      "topLevel": "owner",
+      "path": [
+        "status"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Bot-wide status: servers, owners, and database health",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "owner.list",
+      "topLevel": "owner",
+      "path": [
+        "list"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "List global owners (IDs only)",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "owner.add",
+      "topLevel": "owner",
+      "path": [
+        "add"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Propose adding a global owner (requires confirmation)",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "owner.remove",
+      "topLevel": "owner",
+      "path": [
+        "remove"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Propose removing a database-managed global owner (requires confirmation)",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "owner.diagnostics",
+      "topLevel": "owner",
+      "path": [
+        "diagnostics"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Detailed runtime diagnostics (no secrets are shown)",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "diagnostics.status",
+      "topLevel": "diagnostics",
+      "path": [
+        "status"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Show bot health (uptime, latency, database)",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "diagnostics.permissions",
+      "topLevel": "diagnostics",
+      "path": [
+        "permissions"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Check that the bot has the server permissions it needs",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.view",
+      "topLevel": "config",
+      "path": [
+        "view"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show this server’s current configuration",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.welcome.set",
+      "topLevel": "config",
+      "path": [
+        "welcome",
+        "set"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Set the welcome channel and message",
+      "options": [
+        "channel",
+        "message"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.welcome.disable",
+      "topLevel": "config",
+      "path": [
+        "welcome",
+        "disable"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Turn off welcome messages",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.goodbye.set",
+      "topLevel": "config",
+      "path": [
+        "goodbye",
+        "set"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Set the goodbye channel and message",
+      "options": [
+        "channel",
+        "message"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.goodbye.disable",
+      "topLevel": "config",
+      "path": [
+        "goodbye",
+        "disable"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Turn off goodbye messages",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.logs.set",
+      "topLevel": "config",
+      "path": [
+        "logs",
+        "set"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Set the moderation and security log channel",
+      "options": [
+        "channel"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "config.logs.disable",
+      "topLevel": "config",
+      "path": [
+        "logs",
+        "disable"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Stop posting moderation logs",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.kick",
+      "topLevel": "moderation",
+      "path": [
+        "kick"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Kick a member from the server",
+      "options": [
+        "user",
+        "reason"
+      ],
+      "permissions": [
+        "2"
+      ],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.ban",
+      "topLevel": "moderation",
+      "path": [
+        "ban"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Ban a user from the server",
+      "options": [
+        "user",
+        "reason",
+        "delete_days"
+      ],
+      "permissions": [
+        "4"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.unban",
+      "topLevel": "moderation",
+      "path": [
+        "unban"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Remove a ban by user ID",
+      "options": [
+        "user_id",
+        "reason"
+      ],
+      "permissions": [
+        "4"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.timeout",
+      "topLevel": "moderation",
+      "path": [
+        "timeout"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Temporarily prevent a member from chatting",
+      "options": [
+        "user",
+        "duration",
+        "reason"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.untimeout",
+      "topLevel": "moderation",
+      "path": [
+        "untimeout"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Remove an active timeout from a member",
+      "options": [
+        "user",
+        "reason"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.purge",
+      "topLevel": "moderation",
+      "path": [
+        "purge"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Bulk-delete recent messages in this channel",
+      "options": [
+        "count",
+        "contains"
+      ],
+      "permissions": [
+        "8192"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "moderation.history",
+      "topLevel": "moderation",
+      "path": [
+        "history"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show a user’s recent moderation cases",
+      "options": [
+        "user"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "warn.add",
+      "topLevel": "warn",
+      "path": [
+        "add"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Warn a member with a reason",
+      "options": [
+        "user",
+        "reason"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "warn.list",
+      "topLevel": "warn",
+      "path": [
+        "list"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List a member’s active warnings",
+      "options": [
+        "user"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "warn.remove",
+      "topLevel": "warn",
+      "path": [
+        "remove"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Deactivate one warning by its ID",
+      "options": [
+        "user",
+        "warning_id"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "warn.clear",
+      "topLevel": "warn",
+      "path": [
+        "clear"
+      ],
+      "category": "moderation",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Deactivate all active warnings for a member",
+      "options": [
+        "user",
+        "confirm"
+      ],
+      "permissions": [
+        "1099511627776"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.status",
+      "topLevel": "automod",
+      "path": [
+        "status"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show automod settings",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.enable",
+      "topLevel": "automod",
+      "path": [
+        "enable"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Turn automod on (word filter stays on)",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.disable",
+      "topLevel": "automod",
+      "path": [
+        "disable"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Turn automod off",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.addword",
+      "topLevel": "automod",
+      "path": [
+        "addword"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Add a word to the blocked list",
+      "options": [
+        "word"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.removeword",
+      "topLevel": "automod",
+      "path": [
+        "removeword"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Remove a word from the blocked list",
+      "options": [
+        "word"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.words",
+      "topLevel": "automod",
+      "path": [
+        "words"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List blocked words",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.links",
+      "topLevel": "automod",
+      "path": [
+        "links"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Configure link and invite blocking",
+      "options": [
+        "block_links",
+        "block_invites"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "automod.spam",
+      "topLevel": "automod",
+      "path": [
+        "spam"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Configure anti-spam thresholds",
+      "options": [
+        "enabled",
+        "max_messages",
+        "window_seconds",
+        "timeout_seconds"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.incidents",
+      "topLevel": "security",
+      "path": [
+        "incidents"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show recent security incidents (raids, spam, phishing)",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.audit",
+      "topLevel": "security",
+      "path": [
+        "audit"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show recent audit log entries for this server",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.whitelist.add",
+      "topLevel": "security",
+      "path": [
+        "whitelist",
+        "add"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Exempt a user or role from automod",
+      "options": [
+        "kind",
+        "user",
+        "role"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "security.whitelist.remove",
+      "topLevel": "security",
+      "path": [
+        "whitelist",
+        "remove"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Remove a whitelist entry",
+      "options": [
+        "kind",
+        "user",
+        "role"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.whitelist.list",
+      "topLevel": "security",
+      "path": [
+        "whitelist",
+        "list"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List whitelist entries",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.blocklist.add",
+      "topLevel": "security",
+      "path": [
+        "blocklist",
+        "add"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Block a domain (and its subdomains)",
+      "options": [
+        "domain"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.blocklist.remove",
+      "topLevel": "security",
+      "path": [
+        "blocklist",
+        "remove"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Unblock a domain",
+      "options": [
+        "domain"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.blocklist.list",
+      "topLevel": "security",
+      "path": [
+        "blocklist",
+        "list"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List blocked domains",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "antiraid.setup",
+      "topLevel": "antiraid",
+      "path": [
+        "setup"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Configure join-burst detection",
+      "options": [
+        "enabled",
+        "join_threshold",
+        "window_seconds",
+        "kick_new_joins"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "antiraid.status",
+      "topLevel": "antiraid",
+      "path": [
+        "status"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show anti-raid settings and recent detections",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "role.create",
+      "topLevel": "role",
+      "path": [
+        "create"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Create a new role",
+      "options": [
+        "name",
+        "color"
+      ],
+      "permissions": [
+        "268435456"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "role.delete",
+      "topLevel": "role",
+      "path": [
+        "delete"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Delete a role (requires confirm=true)",
+      "options": [
+        "role",
+        "confirm"
+      ],
+      "permissions": [
+        "268435456"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "role.assign",
+      "topLevel": "role",
+      "path": [
+        "assign"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Give a role to a member",
+      "options": [
+        "user",
+        "role"
+      ],
+      "permissions": [
+        "268435456"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "role.remove",
+      "topLevel": "role",
+      "path": [
+        "remove"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Remove a role from a member",
+      "options": [
+        "user",
+        "role",
+        "reason"
+      ],
+      "permissions": [
+        "268435456"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "channel.lock",
+      "topLevel": "channel",
+      "path": [
+        "lock"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Stop @everyone from sending messages in a channel",
+      "options": [
+        "channel"
+      ],
+      "permissions": [
+        "16"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "channel.unlock",
+      "topLevel": "channel",
+      "path": [
+        "unlock"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Restore default send permission for @everyone",
+      "options": [
+        "channel"
+      ],
+      "permissions": [
+        "16"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "channel.slowmode",
+      "topLevel": "channel",
+      "path": [
+        "slowmode"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Set slowmode for a channel (0 disables)",
+      "options": [
+        "seconds",
+        "channel"
+      ],
+      "permissions": [
+        "16"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "channel.topic",
+      "topLevel": "channel",
+      "path": [
+        "topic"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Set a channel topic",
+      "options": [
+        "text",
+        "channel"
+      ],
+      "permissions": [
+        "16"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "buttonroles.create",
+      "topLevel": "buttonroles",
+      "path": [
+        "create"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Post a button-role panel in this channel (up to 3 roles)",
+      "options": [
+        "title",
+        "role1",
+        "role2",
+        "role3"
+      ],
+      "permissions": [
+        "268435456"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "verification.setup",
+      "topLevel": "verification",
+      "path": [
+        "setup"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Post a verify button that grants a role",
+      "options": [
+        "role"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "verification.disable",
+      "topLevel": "verification",
+      "path": [
+        "disable"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Stop granting the verification role",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "ticket.setup",
+      "topLevel": "ticket",
+      "path": [
+        "setup"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Choose the ticket category and support role",
+      "options": [
+        "category",
+        "support_role"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "ticket.open",
+      "topLevel": "ticket",
+      "path": [
+        "open"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Open a private support ticket",
+      "options": [
+        "topic"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "ticket.close",
+      "topLevel": "ticket",
+      "path": [
+        "close"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Close the ticket in this channel",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "giveaway.start",
+      "topLevel": "giveaway",
+      "path": [
+        "start"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Start a giveaway that ends after a duration",
+      "options": [
+        "prize",
+        "duration",
+        "winners",
+        "channel"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "giveaway.end",
+      "topLevel": "giveaway",
+      "path": [
+        "end"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "End an active giveaway now and pick winners",
+      "options": [
+        "id"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "giveaway.reroll",
+      "topLevel": "giveaway",
+      "path": [
+        "reroll"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Pick new winners for an ended giveaway",
+      "options": [
+        "id"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "giveaway.list",
+      "topLevel": "giveaway",
+      "path": [
+        "list"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List recent giveaways in this server",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "poll.create",
+      "topLevel": "poll",
+      "path": [
+        "create"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Create a poll with 2-4 options",
+      "options": [
+        "question",
+        "option1",
+        "option2",
+        "option3",
+        "option4"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "poll.results",
+      "topLevel": "poll",
+      "path": [
+        "results"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show the current tally for a poll",
+      "options": [
+        "id"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "poll.close",
+      "topLevel": "poll",
+      "path": [
+        "close"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Close a poll so it stops accepting votes",
+      "options": [
+        "id"
+      ],
+      "permissions": [
+        "8192"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "reminder.set",
+      "topLevel": "reminder",
+      "path": [
+        "set"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Remind you after a duration (here or by DM)",
+      "options": [
+        "in",
+        "message",
+        "dm"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "reminder.list",
+      "topLevel": "reminder",
+      "path": [
+        "list"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "List your pending reminders",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "reminder.cancel",
+      "topLevel": "reminder",
+      "path": [
+        "cancel"
+      ],
+      "category": "utility",
+      "access": "public",
+      "guildOnly": false,
+      "description": "Cancel one of your pending reminders",
+      "options": [
+        "id"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.balance",
+      "topLevel": "economy",
+      "path": [
+        "balance"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Check a balance (yours by default)",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.daily",
+      "topLevel": "economy",
+      "path": [
+        "daily"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Claim your daily reward",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.work",
+      "topLevel": "economy",
+      "path": [
+        "work"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Work for a random reward (cooldown applies)",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.pay",
+      "topLevel": "economy",
+      "path": [
+        "pay"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Send some of your balance to another member",
+      "options": [
+        "user",
+        "amount"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.leaderboard",
+      "topLevel": "economy",
+      "path": [
+        "leaderboard"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Top balances in this server",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.history",
+      "topLevel": "economy",
+      "path": [
+        "history"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Your 10 most recent transactions",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.setup",
+      "topLevel": "economy",
+      "path": [
+        "setup"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Configure currency name, daily reward, and work range",
+      "options": [
+        "currency_name",
+        "daily_amount",
+        "work_min",
+        "work_max"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.shop.add",
+      "topLevel": "economy",
+      "path": [
+        "shop",
+        "add"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Add an item to the shop",
+      "options": [
+        "name",
+        "price",
+        "stock",
+        "role"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.shop.list",
+      "topLevel": "economy",
+      "path": [
+        "shop",
+        "list"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List items in the shop",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "economy.shop.buy",
+      "topLevel": "economy",
+      "path": [
+        "shop",
+        "buy"
+      ],
+      "category": "economy",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Buy an item from the shop",
+      "options": [
+        "item"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "level.rank",
+      "topLevel": "level",
+      "path": [
+        "rank"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show a member’s level and XP",
+      "options": [
+        "user"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "level.leaderboard",
+      "topLevel": "level",
+      "path": [
+        "leaderboard"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Top members by XP",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "level.setup",
+      "topLevel": "level",
+      "path": [
+        "setup"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Enable leveling and choose where level-up notices are posted",
+      "options": [
+        "enabled",
+        "announce_channel"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "level.roles.add",
+      "topLevel": "level",
+      "path": [
+        "roles",
+        "add"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Grant a role when a member reaches a level",
+      "options": [
+        "level",
+        "role"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "level.roles.remove",
+      "topLevel": "level",
+      "path": [
+        "roles",
+        "remove"
+      ],
+      "category": "community",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Stop granting a role at a level",
+      "options": [
+        "level"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.create",
+      "topLevel": "customcommand",
+      "path": [
+        "create"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Create a safe template command (global, owner-only)",
+      "options": [
+        "name",
+        "kind",
+        "body",
+        "title",
+        "color",
+        "min_permission"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.list",
+      "topLevel": "customcommand",
+      "path": [
+        "list"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "List all custom commands and their state",
+      "options": [],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.preview",
+      "topLevel": "customcommand",
+      "path": [
+        "preview"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Preview how a custom command renders (only you see it)",
+      "options": [
+        "name"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.delete",
+      "topLevel": "customcommand",
+      "path": [
+        "delete"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Delete a custom command (requires confirm=true)",
+      "options": [
+        "name",
+        "confirm"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.toggle",
+      "topLevel": "customcommand",
+      "path": [
+        "toggle"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Enable or disable a custom command",
+      "options": [
+        "name",
+        "enabled"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "customcommand.run",
+      "topLevel": "customcommand",
+      "path": [
+        "run"
+      ],
+      "category": "owner",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Run a published custom command",
+      "options": [
+        "name"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "backup.create",
+      "topLevel": "backup",
+      "path": [
+        "create"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Save a snapshot of this server’s bot settings",
+      "options": [
+        "label"
+      ],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "backup.list",
+      "topLevel": "backup",
+      "path": [
+        "list"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "List recent backups for this server",
+      "options": [],
+      "permissions": [
+        "32"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "backup.restore",
+      "topLevel": "backup",
+      "path": [
+        "restore"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Restore a backup (asks for confirmation first)",
+      "options": [
+        "id"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": true,
+      "smokeTested": true
+    },
+    {
+      "key": "embed.create",
+      "topLevel": "embed",
+      "path": [
+        "create"
+      ],
+      "category": "administration",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Post a custom embed (title, text, colour)",
+      "options": [
+        "title",
+        "description",
+        "color"
+      ],
+      "permissions": [
+        "8192"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    }
+  ]
+}
