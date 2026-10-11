@@ -19,8 +19,8 @@ A self-hosted Discord bot for moderation, economy, leveling, giveaways, polls, r
 ## Install on Ubuntu (or Debian) with systemd
 
 ```bash
-git clone https://github.com/Tanveer9830/New-and-funnal-bot.git
-cd New-and-funnal-bot
+git clone https://github.com/Tanveer9830/650-discord-bot-V2.git
+cd 650-discord-bot-V2
 sudo bash install.sh
 ```
 
