@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Install, syntax, registry and tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Syntax check (every JavaScript file parses)
+        run: npm run syntax
+      - name: Command registry validation (Discord structural limits)
+        run: npm run validate:commands
+      - name: Automated tests
+        run: npm test
+      - name: Shell script syntax
+        run: |
+          for f in install.sh update.sh uninstall.sh deploy/lib.sh; do bash -n "$f"; done
+
+  audit:
+    name: Dependency vulnerability check
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --no-audit --no-fund
+      - name: npm audit (production dependencies, high and critical)
+        run: npm audit --omit=dev --audit-level=high
+
+  secrets:
+    name: Secret scanning
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scan history for verified secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified

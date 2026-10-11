@@ -138,6 +138,48 @@ function createComponentRouter({ repos, services }) {
     },
   });
 
+  // protect:confirm|cancel:<confirmationId> — protected whitelist grants and protected setting changes.
+  handlers.set('protect', {
+    guildOnly: false,
+    run: async (ctx) => {
+      const [, action, token] = ctx.interaction.customId.split(':');
+      if (!token) throw new UserError('Invalid confirmation.', { code: 'INVALID' });
+      if (action === 'cancel') {
+        const row = repos.confirmations.get(token);
+        if (row && row.actor_id === ctx.user.id) repos.confirmations.consume(token);
+        return ctx.interaction.update({ embeds: [ui.info('Cancelled', 'No protected change was made.')], components: [] });
+      }
+      if (action !== 'confirm') throw new UserError('Invalid confirmation.', { code: 'INVALID' });
+      // Authority is re-checked at click time, not only when the confirmation was created.
+      services.protectedAuth.assertGlobalOwner(ctx.user.id);
+      const row = repos.confirmations.get(token);
+      if (!row) throw new UserError('This confirmation no longer exists. Please run the command again.', { code: 'CONFIRM_MISSING' });
+      if (row.action === 'protection.whitelist.grant') {
+        const payload = services.confirmations.consume({ id: token, action: 'protection.whitelist.grant', actorId: ctx.user.id });
+        const expiresAt = payload.hours ? services.clock.seconds() + payload.hours * 3600 : null;
+        const id = repos.protection.grant({
+          guildId: payload.guildId,
+          userId: payload.userId,
+          capability: payload.capability,
+          authorizedBy: ctx.user.id,
+          expiresAt,
+          reason: payload.reason || null,
+        });
+        if (id === null) throw new UserError('That user already has this capability in this server.', { code: 'DUPLICATE' });
+        return ctx.interaction.update({
+          embeds: [ui.success('Protected whitelist updated', `Granted \`${payload.capability}\` to \`${payload.userId}\` in server \`${payload.guildId}\`${expiresAt ? ` until <t:${expiresAt}:f>` : ' (no expiry)'}.`)],
+          components: [],
+        });
+      }
+      if (row.action === 'protection.settings.update') {
+        const payload = services.confirmations.consume({ id: token, action: 'protection.settings.update', actorId: ctx.user.id });
+        repos.protection.updateSettings({ guildId: payload.guildId, changes: payload.changes, actorId: ctx.user.id });
+        return ctx.interaction.update({ embeds: [ui.success('Protection settings updated', 'The change was saved and audited.')], components: [] });
+      }
+      throw new UserError('Invalid confirmation.', { code: 'INVALID' });
+    },
+  });
+
   return {
     get: (prefix) => handlers.get(prefix) || null,
     prefixes: () => [...handlers.keys()],

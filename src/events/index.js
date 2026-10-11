@@ -8,6 +8,7 @@ const { memberHas, canActOnMember } = require('../security/permissions');
 const { fetchMember, botMember, postLog } = require('../commands/helpers');
 const { logIncident } = require('./incidents');
 const { renderTemplate } = require('./templates');
+const { registerAntiNuke } = require('./antinuke');
 
 /** Attach gateway event handlers. Each handler is isolated: an error is logged and never crashes the process. */
 function registerEvents(client, deps) {
@@ -98,6 +99,8 @@ function registerEvents(client, deps) {
       }
     }
   }));
+
+  registerAntiNuke(client, { logger, repos, services, config });
 
   return { spam };
 }

@@ -47,7 +47,9 @@ test('register-commands dry run builds and summarises the payload without networ
   const r = run('scripts/register-commands.js', ['--scope', 'guild', '--dry-run', '--guild', '123456789012345678']);
   assert.equal(r.status, 0, r.stderr);
   assert.match(r.stdout, /Dry run: nothing sent to Discord/);
-  assert.match(r.stdout, /23 top-level commands/);
+  const { buildRegistry } = require('../src/commands');
+  const expected = buildRegistry().payload().length;
+  assert.match(r.stdout, new RegExp(`${expected} top-level commands`));
 });
 
 test('register-commands refuses global scope without credentials instead of guessing', () => {

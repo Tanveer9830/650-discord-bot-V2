@@ -14,7 +14,7 @@ Made by Tanveer | Discord: tanveer5637
 
 A self-hosted Discord bot for moderation, economy, leveling, giveaways, polls, reminders, tickets, custom commands and server backups. It is written in JavaScript on Node.js 22 with SQLite. It has no native build step.
 
-> **Status: milestone 1 (foundation).** The bot has 100 functional actions across 23 top-level commands. Each action is registered as a group or subcommand. This is not the final 500+ action target. Lavalink music and the OAuth dashboard are not built yet. See [docs/ROADMAP.md](docs/ROADMAP.md) for the honest state of every item and [docs/COMMANDS.md](docs/COMMANDS.md) for the generated command list.
+> **Status: milestone 2, phase 1.** The bot has 110 functional actions across 24 top-level commands, including the owner-verified protected whitelist and anti-nuke detection. Slash commands register automatically at startup. This is not yet the 650+ action target. Live Discord registration has not been verified in this environment. Lavalink music and the OAuth dashboard are not built yet. See [docs/ROADMAP.md](docs/ROADMAP.md) for the honest state of every item and [docs/COMMANDS.md](docs/COMMANDS.md) for the generated command list.
 
 ## Install on Ubuntu (or Debian) with systemd
 
@@ -54,7 +54,7 @@ Other scripts:
 npm install
 cp .env.example .env        # then edit .env; never commit it
 npm run check               # validate config, migrations and the command registry (no Discord login)
-npm test                    # 184 automated tests
+npm test                    # 231 automated tests
 npm start                   # run the bot (needs DISCORD_TOKEN)
 ```
 

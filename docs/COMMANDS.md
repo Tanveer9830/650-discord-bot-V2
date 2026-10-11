@@ -1,18 +1,18 @@
 # Command inventory
 
-Generated 2026-10-10T05:11:41.578Z by `npm run inventory`. Do not edit by hand.
+Generated 2026-10-11T04:35:25.359Z by `npm run inventory`. Do not edit by hand.
 
 ## Counts (verified from code and tests)
 
 | Measure | Count |
 | --- | ---: |
-| Top-level slash commands | 23 |
-| Subcommand groups | 7 |
-| Subcommands (leaf actions, excluding standalone commands) | 99 |
-| Functional actions with handlers | 100 |
-| Administration + moderation + security actions | 49 |
+| Top-level slash commands | 24 |
+| Subcommand groups | 9 |
+| Subcommands (leaf actions, excluding standalone commands) | 109 |
+| Functional actions with handlers | 110 |
+| Administration + moderation + security actions | 52 |
 | Actions with behavioural tests (specific assertions) | 10 |
-| Actions dispatched by the smoke test without an unhandled error | 100 |
+| Actions dispatched by the smoke test without an unhandled error | 110 |
 | Top-level commands confirmed registered with Discord | 0 |
 | Subcommands confirmed registered with Discord | 0 |
 
@@ -71,6 +71,16 @@ Registration: NOT confirmed — no successful Discord registration recorded
 | `/security blocklist add` | security | public | yes | no | yes |
 | `/security blocklist remove` | security | public | yes | no | yes |
 | `/security blocklist list` | security | public | yes | no | yes |
+| `/security antinuke status` | security | public | yes | no | yes |
+| `/security antinuke set` | security | public | yes | no | yes |
+| `/security antinuke disable` | security | public | yes | no | yes |
+| `/protection status` | owner | owner | no | no | yes |
+| `/protection mode` | owner | owner | no | no | yes |
+| `/protection audit` | owner | owner | no | no | yes |
+| `/protection whitelist grant` | owner | owner | no | no | yes |
+| `/protection whitelist revoke` | owner | owner | no | no | yes |
+| `/protection whitelist list` | owner | owner | no | no | yes |
+| `/protection whitelist history` | owner | owner | no | no | yes |
 | `/antiraid setup` | security | public | yes | no | yes |
 | `/antiraid status` | security | public | yes | no | yes |
 | `/role create` | administration | public | yes | no | yes |

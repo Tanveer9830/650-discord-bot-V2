@@ -26,14 +26,30 @@ The original brief asks for a large bot. This repository delivers a tested found
 - Scheduler in a live process: tested by calling `tick()` directly, not by running the timer inside the bot.
 - Behavioural tests cover 10 of 100 actions. The smoke test dispatches all 100 but only checks that none raise an unhandled error. Full behavioural coverage is planned for milestone 2.
 
+## Milestone 2 (in progress): protected security and automatic registration
+
+**Built in phase 1, covered by automated tests (`npm test`, 231 tests at the time of writing):**
+
+- Migration `002_protected_security`: anti-nuke settings, the owner-managed protected whitelist (per server, per capability, with expiry and revoke history), and an append-only protected audit (`src/database/migrations/002_protected_security.js`). Migration 001 is unchanged, and an upgrade test confirms existing data survives.
+- Central owner authorisation, fail-closed (`src/security/protectedAuth.js`).
+- Anti-nuke detection, thresholds, alert-once-per-window, exemptions and response planning (`src/security/antinuke.js`, unit-tested with false-positive cases), plus gateway wiring (`src/events/antinuke.js`) that resolves actors through the audit log.
+- Owner-only `/protection` commands and confirmation flow; admin `/security antinuke status|set|disable` (disable is refused and logged).
+- Automatic, idempotent slash-command registration at startup (`AUTO_REGISTER_COMMANDS`, default on). Registration is verified by reading the commands back from Discord before the state is recorded.
+- CI workflow (`.github/workflows/ci.yml`): locked install, syntax, registry validation, tests, shell syntax, `npm audit`, and secret scanning.
+
+**Built but NOT verified against live Discord** (no credentials in this environment): the gateway wiring, audit-log actor lookup, automatic registration, and the actual Discord registration count.
+
 ## Not built yet
 
 | Area | Status |
 | --- | --- |
 | Lavalink music | Not started. Needs a Lavalink server, so it is a separate milestone. |
 | OAuth2 dashboard | Not started. Needs an HTTP server, OAuth2 code flow with PKCE and state checks, CSRF protection, and a session store. |
-| 500+ actions (150+ admin, 350+ other) | 100 implemented. |
+| 650+ actions (150+ admin, 500+ general) | 110 implemented (see docs/COMMANDS.md). |
 | Multi-language help, per-server custom branding | Not started. |
+| Protected branding change with preview and confirmation | Not started. |
+| Protected Lavalink configuration workflow | Not started. |
+| Installer changes for dashboard and Lavalink selection (independent) | Not started. The current installer does not ask about either component. |
 
 ## Next milestones (planned)
 

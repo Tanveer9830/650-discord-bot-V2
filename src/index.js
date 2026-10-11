@@ -69,6 +69,18 @@ async function main(argv = process.argv.slice(2)) {
     // Only report "online" after Discord has confirmed the login.
     logger.info(`Verified: logged in as ${readyClient.user.tag}`, { guilds: readyClient.guilds.cache.size, brand: BRAND.attribution });
     app.scheduler.start();
+    if (config.autoRegisterCommands && config.discord.clientId) {
+      // Runs in the background: a registration failure is logged and never stops the bot.
+      const { registerCommands } = require('../scripts/register-commands');
+      const scope = config.discord.devGuildId ? 'guild' : 'global';
+      const stateFile = path.join(path.dirname(path.resolve(config.database.path)), 'command-registration.json');
+      registerCommands({ config, scope, guildId: config.discord.devGuildId || null, registry: app.registry, stateFile })
+        .then((result) => {
+          if (result.status === 'failed') logger.warn('Command registration failed', { reason: result.error, scope });
+          else logger.info('Command registration', { status: result.status, scope, count: result.count ?? result.topLevelCount, verified: Boolean(result.verified) });
+        })
+        .catch((error) => logger.warn('Command registration error', { reason: error.message }));
+    }
   });
 
   let shuttingDown = false;

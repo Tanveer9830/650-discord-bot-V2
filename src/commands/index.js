@@ -13,6 +13,7 @@ const MODULES = [
   require('./warn'),
   require('./automod'),
   require('./security'),
+  require('./protection'),
   require('./antiraid'),
   require('./roles'),
   require('./channels'),
