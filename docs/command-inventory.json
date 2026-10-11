@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-10T05:11:41.578Z",
+  "generatedAt": "2026-10-11T04:35:25.359Z",
   "counts": {
-    "topLevelCommands": 23,
-    "subcommandGroups": 7,
-    "subcommands": 99,
-    "functionalActions": 100,
-    "administrationAndModerationActions": 49,
+    "topLevelCommands": 24,
+    "subcommandGroups": 9,
+    "subcommands": 109,
+    "functionalActions": 110,
+    "administrationAndModerationActions": 52,
     "behaviourTestedActions": 10,
-    "smokeTestedActions": 100,
+    "smokeTestedActions": 110,
     "registeredTopLevelCommands": 0,
     "registeredSubcommands": 0
   },
@@ -18,10 +18,10 @@
   "byCategory": {
     "branding": 1,
     "utility": 11,
-    "owner": 11,
+    "owner": 18,
     "administration": 20,
     "moderation": 11,
-    "security": 18,
+    "security": 21,
     "community": 18,
     "economy": 10
   },
@@ -965,6 +965,204 @@
       "permissions": [
         "8"
       ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.antinuke.status",
+      "topLevel": "security",
+      "path": [
+        "antinuke",
+        "status"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Show anti-nuke settings for this server",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.antinuke.set",
+      "topLevel": "security",
+      "path": [
+        "antinuke",
+        "set"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Tune an anti-nuke threshold or the detection window",
+      "options": [
+        "setting",
+        "value"
+      ],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "security.antinuke.disable",
+      "topLevel": "security",
+      "path": [
+        "antinuke",
+        "disable"
+      ],
+      "category": "security",
+      "access": "public",
+      "guildOnly": true,
+      "description": "Attempt to disable anti-nuke (global owner only; attempts are recorded)",
+      "options": [],
+      "permissions": [
+        "8"
+      ],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.status",
+      "topLevel": "protection",
+      "path": [
+        "status"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Show anti-nuke settings and active protected grant count for one server",
+      "options": [
+        "guild_id"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.mode",
+      "topLevel": "protection",
+      "path": [
+        "mode"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Change anti-nuke enabled state or response mode (confirmation required)",
+      "options": [
+        "guild_id",
+        "response_mode",
+        "enabled"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.audit",
+      "topLevel": "protection",
+      "path": [
+        "audit"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Show the protected audit history for one server",
+      "options": [
+        "guild_id"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.whitelist.grant",
+      "topLevel": "protection",
+      "path": [
+        "whitelist",
+        "grant"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Propose granting an anti-nuke capability in one server (confirmation required)",
+      "options": [
+        "guild_id",
+        "user_id",
+        "capability",
+        "hours",
+        "reason"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.whitelist.revoke",
+      "topLevel": "protection",
+      "path": [
+        "whitelist",
+        "revoke"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Revoke an active protected whitelist grant",
+      "options": [
+        "guild_id",
+        "user_id",
+        "capability"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.whitelist.list",
+      "topLevel": "protection",
+      "path": [
+        "whitelist",
+        "list"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "List active protected whitelist grants in one server",
+      "options": [
+        "guild_id"
+      ],
+      "permissions": [],
+      "hasHandler": true,
+      "tested": false,
+      "smokeTested": true
+    },
+    {
+      "key": "protection.whitelist.history",
+      "topLevel": "protection",
+      "path": [
+        "whitelist",
+        "history"
+      ],
+      "category": "owner",
+      "access": "owner",
+      "guildOnly": false,
+      "description": "Show grant history (including revoked and expired rows)",
+      "options": [
+        "guild_id"
+      ],
+      "permissions": [],
       "hasHandler": true,
       "tested": false,
       "smokeTested": true

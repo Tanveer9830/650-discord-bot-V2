@@ -47,6 +47,8 @@ const schema = z.object({
   COMMAND_COOLDOWN_MS: z.coerce.number().int().min(0).max(60000).default(1500),
   SCHEDULER_INTERVAL_MS: z.coerce.number().int().min(1000).max(300000).default(15000),
   ALLOW_LOCAL_OVERRIDE: boolFromEnv,
+  // Register slash commands automatically after login (idempotent). Set to false to manage registration manually.
+  AUTO_REGISTER_COMMANDS: z.enum(['true', 'false', '1', '0', 'yes', 'no', '']).optional().transform((v) => v === undefined || v === '' || v === 'true' || v === '1' || v === 'yes'),
 });
 
 /**
@@ -73,6 +75,7 @@ function parseConfig(env = process.env) {
     log: Object.freeze({ level: data.LOG_LEVEL, format: data.LOG_FORMAT }),
     commandCooldownMs: data.COMMAND_COOLDOWN_MS,
     schedulerIntervalMs: data.SCHEDULER_INTERVAL_MS,
+    autoRegisterCommands: data.AUTO_REGISTER_COMMANDS,
   });
 }
 

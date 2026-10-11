@@ -11,6 +11,7 @@ const {
   createAntiRaidRepo,
 } = require('./moderation');
 const { createEconomyRepo } = require('./economy');
+const { createProtectionRepo } = require('./protection');
 const {
   createLevelRepo,
   createCustomCommandRepo,
@@ -35,6 +36,7 @@ function createRepos(db, clock = defaultClock()) {
     blocklist: createBlocklistRepo(db, clock),
     incidents: createIncidentRepo(db, clock),
     antiraid: createAntiRaidRepo(db, clock),
+    protection: createProtectionRepo(db, clock),
     economy: createEconomyRepo(db, clock),
     levels: createLevelRepo(db, clock),
     customCommands: createCustomCommandRepo(db, clock),

@@ -9,6 +9,7 @@ const crypto = require('node:crypto');
  */
 const MIGRATIONS = Object.freeze([
   Object.freeze({ id: '001_initial_schema', sql: require('./001_initial_schema') }),
+  Object.freeze({ id: '002_protected_security', sql: require('./002_protected_security') }),
 ]);
 
 function checksum(sql) {

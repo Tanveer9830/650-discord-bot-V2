@@ -7,6 +7,13 @@ const { hostOf } = require('../security/links');
 const { sanitizeText } = require('../utils/text');
 const ui = require('../utils/ui');
 const { requireGuild } = require('./helpers');
+const { logIncident } = require('../events/incidents');
+const { settingsFromRow, validateSettingsUpdate, DEFAULT_LIMITS } = require('../security/antinuke');
+
+const ANTINUKE_TUNABLE = [
+  { name: 'window_seconds', value: 'window_seconds' },
+  ...Object.keys(DEFAULT_LIMITS).map((k) => ({ name: k, value: k })),
+];
 
 const manage = [PermissionFlagsBits.Administrator];
 const KINDS = [
@@ -118,6 +125,54 @@ module.exports = defineModule({
             const guild = requireGuild(ctx);
             const list = ctx.repos.blocklist.list(guild.id);
             await ctx.respond({ embeds: [ui.info('Blocked domains', list.length ? list.join('\n') : 'None configured.')] });
+          },
+        },
+      },
+    },
+    antinuke: {
+      description: 'Anti-nuke status and thresholds (disabling and response mode are owner-only)',
+      actions: {
+        status: {
+          description: 'Show anti-nuke settings for this server',
+          permissions: manage,
+          run: async (ctx) => {
+            const guild = requireGuild(ctx);
+            const s = settingsFromRow(ctx.repos.protection.getSettings(guild.id));
+            const lines = [
+              `Enabled: ${s.enabled ? 'yes' : 'no'}`,
+              `Response mode: ${s.responseMode} (set by the global owner)`,
+              `Window: ${s.windowSeconds}s`,
+              ...Object.entries(s.limits).map(([k, v]) => `${k}: ${v}`),
+            ];
+            await ctx.respond({ embeds: [ui.info('Anti-nuke status', lines.join('\n'))] });
+          },
+        },
+        set: {
+          description: 'Tune an anti-nuke threshold or the detection window',
+          permissions: manage,
+          options: [
+            { type: 'string', name: 'setting', description: 'Which value to change', required: true, choices: ANTINUKE_TUNABLE },
+            { type: 'integer', name: 'value', description: 'New value (limits 2-200, window 5-600 seconds)', required: true, min: 2, max: 600 },
+          ],
+          run: async (ctx) => {
+            const guild = requireGuild(ctx);
+            const key = ctx.interaction.options.getString('setting', true);
+            const value = ctx.interaction.options.getInteger('value', true);
+            const check = validateSettingsUpdate({ [key]: value });
+            if (!check.ok) throw new UserError(check.errors.join(' '), { code: 'INVALID' });
+            ctx.repos.protection.updateSettings({ guildId: guild.id, changes: { [key]: value }, actorId: ctx.user.id });
+            await ctx.respond({ embeds: [ui.success('Anti-nuke updated', `${key} is now ${value}. The change is audited.`)] });
+          },
+        },
+        disable: {
+          description: 'Attempt to disable anti-nuke (global owner only; attempts are recorded)',
+          permissions: manage,
+          run: async (ctx) => {
+            const guild = requireGuild(ctx);
+            // Disabling protection is a protected policy change. Administrators cannot do it, and the attempt is logged.
+            logIncident(ctx.repos, { guildId: guild.id, kind: 'protection.tamper_attempt', severity: 'high', details: `user ${ctx.user.id} tried to disable anti-nuke` });
+            ctx.services.audit({ guildId: guild.id, actorId: ctx.user.id, action: 'protection.tamper_attempt', details: { control: 'antinuke.disable' } });
+            throw new UserError('Only the verified global owner can disable anti-nuke. This attempt has been recorded.', { code: 'NOT_OWNER' });
           },
         },
       },

@@ -26,6 +26,14 @@
 | Installer | Checksum-verified Node.js archive. No `curl | bash`. No GitHub credentials requested. |
 | Git hygiene | `.gitignore` excludes `.env`, databases, backups, logs and `node_modules`. `.env.example` holds placeholders only. |
 
+## Protected security (milestone 2, phase 1)
+
+- **Global Owner** is authorised only by the numeric Discord ID in `OWNER_IDS` (default `1131248987173814336`). Usernames, nicknames, display names, roles and Administrator permission never grant it. Central checks live in `src/security/protectedAuth.js` and fail closed on any error.
+- **Protected whitelist** (`/protection whitelist grant|revoke|list|history`) is owner-only. Each row grants ONE capability (`channels`, `roles`, `bans`, `kicks`, `webhooks`, `bots`, `permissions`, `guild_settings`, or `all`) to ONE user in ONE server, optionally with an expiry. A grant in one server never applies in another. Grants require a confirmation button that only the owner who started it can press, and it expires after 2 minutes.
+- **Anti-nuke** (`src/security/antinuke.js`, `src/events/antinuke.js`) watches channel, role, ban, kick, webhook, bot-addition, privilege-grant, dangerous guild-setting and bot-tamper events. It identifies the actor from the audit log and counts per actor and rule inside a sliding window. Defaults are conservative: detection is on, the response is `alert` only, and an alert is raised once per window.
+- **Response ladder**: `log` (record only), `alert` (post to the log channel), `restrict` (remove hazardous roles from the actor, only when the bot outranks them and the actor is not the server owner or the bot). Only the global owner can change the mode or turn anti-nuke off. An administrator who tries to disable it is refused and the attempt is recorded as a high-severity incident.
+- **Audit**: `protected_audit` is append-only (database triggers reject UPDATE and DELETE). Every grant, revoke and settings change records before and after values.
+
 ## Known limits (be honest about these)
 
 - Automod heuristics are not a malware scanner. Suspicious-link detection flags common scam patterns for review. It is not a substitute for a reputation service.
@@ -37,3 +45,11 @@
 ## Reporting
 
 Report security issues privately to the maintainer (Tanveer | Discord: tanveer5637). Do not post tokens, env files or database contents in issues.
+
+### Anti-nuke limits
+
+- Discord's audit log can be delayed or incomplete. If the bot lacks View Audit Log, or no entry matches within 15 seconds, the actor is unknown and the event is recorded as `antinuke.unattributed` and is not counted.
+- Anti-nuke does not prevent a determined attacker. It detects bursts, alerts operators and can strip hazardous roles, but it cannot undo deletions. Recover with backups (`/backup`).
+- Role permission changes on existing roles (a role gaining Administrator) are not monitored yet. Only member role grants are.
+- The bot's own role hierarchy limits what `restrict` can do. Owners of the server cannot be restricted.
+

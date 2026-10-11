@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Tanveer Discord Bot installer for Ubuntu and Debian (systemd).
-#   git clone https://github.com/Tanveer9830/New-and-funnal-bot.git && cd New-and-funnal-bot && sudo bash install.sh
+#   git clone https://github.com/Tanveer9830/650-discord-bot-V2.git && cd 650-discord-bot-V2 && sudo bash install.sh
 # Options: --reconfigure (re-enter credentials), --no-start (install without starting the service).
 # The installer never asks for GitHub credentials and never pipes a remote script into a shell.
 set -Eeuo pipefail
