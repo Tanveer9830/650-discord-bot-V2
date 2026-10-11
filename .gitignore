@@ -1,0 +1,32 @@
+# Secrets and local configuration - never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Runtime data: databases, backups, logs
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+backups/
+logs/
+*.log
+
+# Dependencies and build output
+node_modules/
+coverage/
+dist/
+build/
+.cache/
+.tmp/
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

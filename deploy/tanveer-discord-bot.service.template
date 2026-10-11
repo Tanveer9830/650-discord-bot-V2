@@ -1,0 +1,50 @@
+# systemd unit template. install.sh fills in the placeholders (APP_DIR, DATA_DIR, ENV_FILE, NODE_BIN, SERVICE_USER).
+[Unit]
+Description=Tanveer Discord Bot (Made by Tanveer | Discord: tanveer5637)
+Documentation=file://@APP_DIR@/docs/OPERATIONS.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=@SERVICE_USER@
+Group=@SERVICE_USER@
+WorkingDirectory=@APP_DIR@
+EnvironmentFile=@ENV_FILE@
+Environment=NODE_ENV=production
+Environment=DATABASE_PATH=@DATA_DIR@/bot.sqlite
+Environment=BACKUP_DIR=@DATA_DIR@/backups
+ExecStart=@NODE_BIN@ --disable-warning=ExperimentalWarning src/index.js
+Restart=on-failure
+RestartSec=5
+# Exit 78 means the configuration is invalid. Restarting would not fix it, so do not loop.
+RestartPreventExitStatus=78
+TimeoutStopSec=20
+KillSignal=SIGTERM
+
+# Hardening. The bot needs only its own data directory and outbound network access.
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictSUIDSGID=yes
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+# Node.js (V8) needs executable memory, so this cannot be enabled.
+MemoryDenyWriteExecute=no
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+ReadWritePaths=@DATA_DIR@
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
